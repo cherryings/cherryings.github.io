@@ -1,0 +1,786 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>二叉树OJ | 飙马野郎</title><meta name="keywords" content="C++"><meta name="author" content="飙马野郎,2634716776@qq.com"><meta name="copyright" content="飙马野郎"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="二叉树OJ"><meta name="application-name" content="二叉树OJ"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="二叉树OJ"><meta property="og:url" content="https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/index.html"><meta property="og:site_name" content="飙马野郎"><meta property="og:description" content="进阶二叉树OJ题根据二叉树创建字符串链接 : https:&amp;#x2F;&amp;#x2F;leetcode.cn&amp;#x2F;problems&amp;#x2F;construct-string-from-binary-tree&amp;#x2F; 题目描述:   给定一个二叉树节点的 root ,采用前序遍历的方式将二叉树转化为一个由括号和整数组成的字符串,返回构造出的字"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg"><meta property="article:author" content="飙马野郎"><meta property="article:tag"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg"><meta name="description" content="进阶二叉树OJ题根据二叉树创建字符串链接 : https:&amp;#x2F;&amp;#x2F;leetcode.cn&amp;#x2F;problems&amp;#x2F;construct-string-from-binary-tree&amp;#x2F; 题目描述:   给定一个二叉树节点的 root ,采用前序遍历的方式将二叉树转化为一个由括号和整数组成的字符串,返回构造出的字"><link rel="shortcut icon" href="/favicon.ico"><link rel="canonical" href="https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/"><link rel="preconnect" href="//cdn.cbd.int"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="code-xxx"/><meta name="msvalidate.01" content="xxx"/><link rel="manifest" href="/manifest.json"/><meta name="msapplication-TileColor" content="var(--anzhiyu-main)"/><link rel="mask-icon" href="/img/siteicon/apple-icon-180.png" color="#5bbad5"/><link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-icon-precomposed" sizes="180x180" href="/img/siteicon/apple-icon-180.png"/><link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/32.png"/><link rel="icon" type="image/png" sizes="16x16" href="/img/siteicon/16.png"/><link rel="bookmark" href="/img/siteicon/apple-icon-180.png"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-2732.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2732-2048.jpg" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2388.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2388-1668.jpg" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1536-2048.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2048-1536.jpg" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1668-2224.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2224-1668.jpg" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1620-2160.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2160-1620.jpg" media="(device-width: 810px) and (device-height: 1080px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1290-2796.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2796-1290.jpg" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1179-2556.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2556-1179.jpg" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1284-2778.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2778-1284.jpg" media="(device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1170-2532.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2532-1170.jpg" media="(device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1125-2436.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2436-1125.jpg" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2688.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2688-1242.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-828-1792.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1792-828.jpg" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1242-2208.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-2208-1242.jpg" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-750-1334.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1334-750.jpg" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-640-1136.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)"/><link rel="apple-touch-startup-image" href="/img/siteicon/apple-splash-1136-640.jpg" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: {"enable":true,"img":"https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png"},
+  postHeadAiDescription: {"enable":true,"gptName":"AnZhiYu","mode":"local","switchBtn":false,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"xxxx","Referer":"https://xx.xx/"},
+  diytitle: {"enable":true,"leaveTitle":"都说了长风破浪会有时","backTitle":"言出法随"},
+  LA51: undefined,
+  greetingBox: {"enable":true,"default":"晚上好👋","list":[{"greeting":"晚安😴","startTime":0,"endTime":5},{"greeting":"早上好鸭👋, 祝你一天好心情！","startTime":6,"endTime":9},{"greeting":"上午好👋, 状态很好，鼓励一下～","startTime":10,"endTime":10},{"greeting":"11点多啦, 在坚持一下就吃饭啦～","startTime":11,"endTime":11},{"greeting":"午安👋, 宝贝","startTime":12,"endTime":14},{"greeting":"🌈充实的一天辛苦啦！","startTime":14,"endTime":18},{"greeting":"19点喽, 奖励一顿丰盛的大餐吧🍔。","startTime":19,"endTime":19},{"greeting":"晚上好👋, 在属于自己的时间好好放松😌~","startTime":20,"endTime":24}]},
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: {"mode":"api","api":"https://img2color-go.vercel.app/api?img=","cover_change":true},
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: 飙马野郎","link":"链接: ","source":"来源: 飙马野郎","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://cdn.cbd.int/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: {"enable":true,"delay":100,"shiftDelay":200},
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: '飙马野郎',
+  title: '二叉树OJ',
+  postAI: '',
+  pageFillDescription: '进阶二叉树OJ题, 根据二叉树创建字符串, 二叉树的层序遍历(分层遍历), 二叉树的层序遍历(分层遍历)Ⅱ, 二叉树的最近公共祖先, 二叉搜索树与双向链表, 从前序与中序遍历序列构造二叉树, 从中序遍历与后序遍历序列构造二叉树, 二叉树的前序遍历(非递归迭代), 二叉树的中序遍历(非递归迭代), 二叉树的后序遍历(非递归迭代)进阶二叉树题根据二叉树创建字符串链接题目描述给定一个二叉树节点的采用前序遍历的方式将二叉树转化为一个由括号和整数组成的字符串返回构造出的字符串空节点使用一对空括号表示转化后需要省略所有不影响字符串与原始二叉树之间的一对一映射关系的空括号对示例输入输出解释初步转化后得到由题目可知需要得到前序遍历的结果即根左子树右子树且示例中得到当左右子树为空时则不需要括号左子树为空右子树不为空时左子树需要括号右子树为空时括号省略解题思路该题的解题思路即为采用分治的思路将问题按照前序遍历的方式根左子树右子树化为对应的结果返回值为所以当返回结果为数字时可以使用函数将数字结果转化为返回根据前序遍历结果初步操作可以为当节点为空时不予操作返回空字符串问题转化为子问题即采用前序遍历的方式对其进行处理以示例为例这里运行的结果为接下来进行特殊处理当节点左右都为空时只需要返回节点本身的当节点左为空又不为空时默认打印出左节点及左节点的当右节点为空左节点不为空时只打印左节点以及所对应的最终代码节点为空返回空字符串左右子树都为空只返回该节点的值右节点为空但左节点不为空时不打印右节点对应的左节点为空但右节点不为空时默认打印即可二叉树的层序遍历分层遍历链接题目描述给你二叉树的根节点返回其节点值的层序遍历即逐层地从左到右访问所有节点示例输入输出由题可知该题需要进行层序遍历且使用解答时需要返回对应的二维数组解题思路该题的解题思路与层序遍历如出一辙可以使用容器对应的将节点进行保存且当访问一个根节点就代入对应的左右节点当然在入左右节点时需要判断节点是否为空避免在对节点进行访问的时候出现非法的空指针引用代码返回一个若是节点为空则直接返回一个空的创建一个队列容器保证能将数据节点按照顺序进行访问且按照顺序进行父节点出子节点入的方式进行为了保证下面的循环条件先将根节点入队列当根节点不为空时进行循环使用队列的属性判断这次所入队列为多少需要进行几层判断如第一层的节点只有一个节点根节点所以该层的数据只有一个创建临时的用来返回每层的在中插入对应的数据当一个节点出队时需要入其对应的左右子树出节点将临时的放入至需要返回的容器中返回二维数组二叉树的层序遍历分层遍历链接题目描述给你二叉树的根节点返回其节点值自底向上的层序遍历即按从叶子节点所在层到根节点所在的层逐层从左向右遍历输入输出解题思路解题思路即为上题代码当最终的成型之后将该容器对象使用函数进行逆置代码不再进行赘述二叉树的最近公共祖先题目链接题目描述给定一个二叉树找到该树中两个指定节点的最近公共祖先百度百科中最近公共祖先的定义为对于有根树的两个节点最近公共祖先表示为一个节点满足是的祖先且的深度尽可能大一个节点也可以是它自己的祖先需要注意在这题当中题目描述给出注意事项两个节点必定存在于该树中且两棵树的节点树示例输入输出解释节点和节点的最近公共祖先是节点示例输入输出解释节点和节点的最近公共祖先是节点因为根据定义最近公共祖先节点可以为节点本身从题目描述可知对应的最近公共祖先的概念解题思路思路暴力解法思路的方法及为创建一个子函数根据子函数来判断两个节点是否存在于该节点的左子树于右子树当节点存在于该节点的左子树与右子树则代表该节点即为两个节点的最近公共祖先思路思路的方式即为一样采取子函数的方式利用两个栈的特性来获取两个节点对应的路径首先需要确保两条路径的长度相同及长度较长的部分必定不为最近公共祖先将长度较长的栈容器将元素至两个容器的长度相等再根据容器的路径判断其中最先相同的最近公共祖先思路思路的方式与思路的方式相当但是不需要子函数思路即为采用递归的方式判断左右两个子树当节点访问至两个节点的其中一个节点时返回该节点遇到空时返回空指针当节点左子树为空时返回右子树的结果表示最近公共祖先不存在与该节点与该节点的左子树当节点右子树为空时返回左子树的结果表示最近公共祖先不存在与该节点与该节点的右子树当两者都不为空时则表示该节点即为两个节点的最近公共祖先最终代码思路暴力解法如果该节点为空节点则返回如果该节点即为所寻找的节点返回该处操作则表示该节点不为最近公共祖先需要向下继续遍历如果该节点左子树的结果为真则表示存在于该节点的左子树如果该节点右子树的结果为真则表示存在于该节点的右子树思路为递归思路且需要一个子函数用于判断两个节点的位置如果两个节点其中一个节点为节点那么说明节点结尾最近的公共祖先判断节点于节点是否存在于左右子树当中这个判断表示这个节点即为最近的公共祖先如果两个节点都在该树的左子树当中则不再去右子树遍历应遍历其左子树反则遍历其右子树思路的题解思路较好理解但是其代码过于复杂时间复杂度过高即极端情况下需要遍历所有节点且所有节点都需要再次进行遍历递归思路思路使用两个栈来存放路径寻找两个节点的路径判断路径中最近公共祖先空节点即未找到返回先对节点进行插入再进行判断说明节点的左右节点都为空需要对该节点进行出栈且返回调用子函数使得每个栈都能获取对应的路径路径获取完毕之后对路径进行处理但凡其中一个大都表示不为公共祖先需要出栈此处两个路径的大小已经相同判断两个路径中的最近公共祖先该方法在时间发杂度中大于思路的暴力解法思路如果节点为空时直接返回避免对空指针非法解引用当为或是时说明这个节点为最近的公共祖先使用两个指针来保存遍历的结果当左为空时表示左子树不存在其中一个节点返回右子树结果当右为空时表示右子树不存在其中一个节点返回左子树结果当两个指针的返回结果都不为空时即表示该节点为两个节点的最近公共祖先二叉搜索树与双向链表题目链接题目描述输入一棵二叉树将二叉树转换成一个排序的双向链表如下图所示数据范围输入二叉树的节点数二叉树中每个节点的值要求空间复杂度即在原树上操作时间复杂度注意要求不能创建任何新的结点只能调整树中结点指针的指向当转化完成以后树中节点的左指针需要指向前驱树中节点的右指针需要指向后继返回链表中的第一个节点的指针函数返回的有左右指针其实可以看成一个双向链表的数据结构你不用输出双向链表程序会根据你的返回值自动打印输出输入描述二叉树的根节点返回值描述双向链表的其中一个头节点示例输入返回值说明输入题面图中二叉树输出的时候将双向链表的头节点返回即可解图思路思路该题若是没有空间复杂度限制的情况可以采用另一容器对其中的节点利用中序遍历进行重新排布再遍历对象以双指针前后指针的方式重新将节点进行排布即可思路思路的方式与思路的方式类似即在原树当中采用类似前后指针的方式对该树进行访问创建一个子函数利用递归的方式一个指针记录前一个节点一个指针记录后一个节点实现在原树中重排代码思路存在搜索二叉树利用中序遍历将其节点按照顺序进行保存该方法并不符合题意但在题中可以通过思路题目要求原地算法要求空间复杂度为当节点为空时不做处理采用中序遍历的方式进行遍历由于参数为指针引用即该指针即为上一个指针的节点可以采用上一个指针的节点的来指向该指针实现双向判断是否为空避免对空指针的非法解引用根据该节点找到链表的头节点从而返回对应的链表头节点返回头节点从前序与中序遍历序列构造二叉树题目链接题目描述给定两个整数数组和其中是二叉树的先序遍历是同一棵树的中序遍历请构造二叉树并返回其根节点示例输入输出其中该题给出提示与均无重复元素均出现在中保证为二叉树的前序遍历序列保证为二叉树中的中序遍历序列解题思路该题的思路即为类似快速排序思路使用前序遍历确定树与各个子树的根节点并利用中序遍历判断左右区间分别分为的方式对中序遍历进行分治当节点为根节点的时候可以直接创建节点创建节点之后由于该节点为每次递归的根节点所以需要根据中序遍历来判断中间节点位置并根据中间节点区分出左右子区间当区分出左右子区间时则可以继续递归按照前序遍历最后应该注意由于该题思路为区间思路所以可能出现区间不存在的可能即当区间不存在时则不能再继续向下访问应该及时返回空指针最终代码利用子函数来进行递归该思路类似于快速排序将问题以分治的思路划分为子问题其中两个为题目所给分别为前序与中序遍历序列用来遍历前序遍历序列确定每棵子树的根节点位置与来区分中序遍历序列中的左右子区间最后添加由于为区间分布所以可能出现区间不存在的可能当区间不存在时则不能再向下遍历应当返回空指针利用前序遍历序列创建节点循环条件只剩最后一个节点的时候也仍需进行分治思路进行递归判断所在位置在中序遍历中的位置从而进行区分中序遍历中的左右子区间将指针自增用于遍历下一个前序遍历中的节点分别递归当返回时节点被链接返回节点子函数中的为引用不能直接传参常量从中序遍历与后序遍历序列构造二叉树题目链接题目描述给定两个整数数组和其中是二叉树的中序遍历是同一棵树的后序遍历请你构造并返回这颗二叉树示例输入输出从题目描述中可以看出该题与上一题的思路如出一辙解题思路该题的思路与从前序与中序遍历序列构造二叉树十分相似唯一不同的是一个给的是前序遍历序列一个给的是后序遍历序列其思路也大致相同即采用中序遍历序列来判断左右子区间用后序遍历序列来判断根节点代码二叉树的前序遍历非递归迭代题目链接题目描述给定一个二叉树的根节点返回它节点值的前序遍历示例输入输出解题思路利用完成这道题时需要返回一个该题以递归的思路来做的话会较为简单根据每次递归子树时将会遇到的情况做特殊处理并将其放到一个容器当中并返回而若是非递归的话则不能使用递归的这种思路但是使用非递归的话可以利用其他的容器对树中的节点做处理就以该题前序遍历为例前序遍历的路径子树访问的顺序为根左子树右子树这里不以示例为例以该图为例这棵树以前序遍历最终得到的结果为即其可以看成左路节点与左路节点右子树的左路节点将问题化为子问题以该图为例即为将一棵树分为左路节点以及左路节点的右子树将问题划分为子问题可以使用一个容器栈根据其的特性将数据进行存储并且反向拿出即以该树的左路节点为例将左路节点全部入栈当栈顶左路节点被出时访问它的右子树该种方式不是递归但是思路上胜似递归代码用来存放左路节点用来做返回节点必定存在要么在栈中要么为所在位置故当栈不为空或者不为时将其入队列由于该遍历方式为前序遍历即根左子树右子树故该节点可以直接访问遍历左路节点每次去访问栈顶元素左路节点的右子树二叉树的中序遍历非递归迭代题目链接题目描述给定一个二叉树的根节点返回它的中序遍历示例输入输出解题思路该题的解题思路与上一题二叉树的中序遍历如出一辙即也是通过将树分为左路节点与左路节点的右子树的方式但稍微不同的是对于该题来说由于是以中序遍历即左子树根右子树的方式对树进行遍历所以第一次对左路节点进行遍历时不能直接进行访问当左子树访问完后才能访问这个子树的根节点左路节点大体上还是相同代码作为函数返回用来访问左路节点及节点的右子树该指针用来遍历左路节点节点必定存在要么在当前要么在栈中否则即为遍历结束将节点入栈且在入栈时不能直接进行访问当该节点的左子树被访问完毕才能访问该节点这个节点必定是这棵树子树的左路节点根据中序遍历左子树根右子树的顺序可以访问该节点访问该左路节点的右子树二叉树的后序遍历非递归迭代题目链接题目描述给你一棵二叉树的根节点返回其节点值的后序遍历示例输入输出解题思路思路思路的思路即为将前序遍历进行修改将其修改为根右子树左子树的访问顺序再最后对结果进行一次逆置即后序遍历左子树右子树根这种方式的思路是可行的但是若是需要边遍历边进行打印则不可取该种方法本质上是一种取巧的办法但是在该题中可以运行思路以类似于前序与中序遍历的思路相同但是唯一不同的是在前序遍历或者中序遍历时前序遍历时根节点可以直接访问而中序遍历时节点的左子树访问完毕后即可以访问根节点而后序遍历与前序中序不同的是后序遍历必须将节点的左右子树都访问结束后才能访问根节点由于也是按照左路节点与左路节点的右子树的左路节点将问题化为子问题进行迭代的思路所以左路节点的左子树可以默认为已经访问完毕此时只需要处理节点的右子树即可当节点的右子树为时为了避免对空指针的非法解引用操作所以当该节点的右子树为空时空间直接访问该节点当该节点的右子树访问完毕时也可以访问该节点那么问题是如何判断该节点的右子树是否被访问完毕可以使用一个指针来记录每次所访问节点的位置并将该位置记住当在栈顶出取出节点时如果该节点的右子树为空或者是该节点的右子树等于上次访问过的节点即时表示该节点的右子树已经被访问可以直接访问该节点代码思路用来存放右路节点用来作返回用于遍历节点必定存在要么在栈中要么为所在位置故当栈不为空或者不为时将其入队列由于该遍历方式为变相的前序遍历即根右子树左子树故该节点可以直接访问遍历右路节点每次去访问栈顶元素右路节点的左子树得出的结果即为根右子树左子树逆置后即为左子树右子树根即为后序遍历顺序该思路为前序遍历的修改并采用逆置得到后序遍历的结果思路用来存放左路节点用来做返回遍历左路节点用来记录每个被访问的节点遍历左路节点这里遍历左路节点时只对左路节点进行入栈操作由于是后序遍历所以第一次访问根节点的时候不能进行访问取出栈顶节点并准备访问栈顶节点的右子树左子树默认已经访问完毕当右子树为空时为了避免对空指针的非法解引用且没必要再对右子树进行访问由于指针记录了每次上一次访问的节点所以当该节点的右子树时则表示该节点的右子树已经被访问完毕可以直接访问该节点表示该节点的右子树未被访问过需要先访问该节点的右子树返回结果',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-21 11:37:51',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://pic.imgdb.cn/item/657d5d6fc458853aef737cf4.jpg"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://cdn.cbd.int/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.csdn.net/2202_75303754?type=blog" title="CSND戳这里"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/csdn%20(1).svg" alt="CSND戳这里"/><span class="back-menu-item-text">CSND戳这里</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">飙马野郎</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a><div id="he-plugin-simple"></div><script>var WIDGET = {
+  "CONFIG": {
+    "modules": "0124",
+    "background": "2",
+    "tmpColor": "FFFFFF",
+    "tmpSize": "16",
+    "cityColor": "FFFFFF",
+    "citySize": "16",
+    "aqiColor": "E8D87B",
+    "aqiSize": "16",
+    "weatherIconSize": "24",
+    "alertIconSize": "18",
+    "padding": "10px 10px 10px 10px",
+    "shadow": "0",
+    "language": "auto",
+    "borderRadius": "20",
+    "fixed": "true",
+    "vertical": "top",
+    "horizontal": "left",
+    "left": "20",
+    "top": "7.1",
+    "key": "df245676fb434a0691ead1c63341cd94"
+  }
+}
+</script><link rel="stylesheet" href="https://widget.qweather.net/simple/static/css/he-simple.css?v=1.4.0"/><script src="https://widget.qweather.net/simple/static/js/he-simple.js?v=1.4.0"></script></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button only-home" id="travellings_button" title="随机前往一个开往项目网站"><a class="site-page" onclick="anzhiyu.totraveling()" title="随机前往一个开往项目网站" href="javascript:void(0);" rel="external nofollow" data-pjax-state="external"><i class="anzhiyufont anzhiyu-icon-train"></i></a></div><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png" target="_blank"><img class="post-qr-code-img" alt="微信" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png" target="_blank"><img class="post-qr-code-img" alt="支付宝" src="https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-alipay.png"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 1.05rem;">C++<sup>6</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.05rem;">数据结构<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/12/"><span class="card-archive-list-date">十二月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div><div class="console-btn-item" id="consoleKeyboard" onclick="anzhiyu.keyboardToggle()" title="快捷键开关"><a class="keyboard-switch"><i class="anzhiyufont anzhiyu-icon-keyboard"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="article-meta tags"><a class="article-meta__tags" href="/tags/C/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>C++</span></a></span></div></div><h1 class="post-title" itemprop="name headline">二叉树OJ</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2023-12-21T03:37:51.787Z" title="更新于 2023-12-21 11:37:51">2023-12-21</time></span></div><div class="meta-secondline"><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为长沙"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>长沙</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg"></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/"><header><a href="/tags/C/" tabindex="-1" itemprop="url">C++</a><h1 id="CrawlerTitle" itemprop="name headline">二叉树OJ</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">飙马野郎</span><time itemprop="dateCreated datePublished" datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time><time itemprop="dateCreated datePublished" datetime="2023-12-21T03:37:51.787Z" title="更新于 2023-12-21 11:37:51">2023-12-21</time></header><h1 id="进阶二叉树OJ题"><a href="#进阶二叉树OJ题" class="headerlink" title="进阶二叉树OJ题"></a>进阶二叉树OJ题</h1><h2 id="根据二叉树创建字符串"><a href="#根据二叉树创建字符串" class="headerlink" title="根据二叉树创建字符串"></a>根据二叉树创建字符串</h2><p>链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/construct-string-from-binary-tree/">https://leetcode.cn/problems/construct-string-from-binary-tree/</a></p>
+<p>题目描述: </p>
+<blockquote>
+<p>给定一个二叉树节点的 <code>root</code> ,采用前序遍历的方式将二叉树转化为一个由括号和整数组成的字符串,返回构造出的字符串</p>
+<p>空节点使用一对空括号 <code>()</code> 表示,转化后需要省略所有不影响字符串与原始二叉树之间的一对一映射关系的空括号对;</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220134001.png"></p>
+<p>输入: <code>root = [ 1 , 2 , 3 , 4 ]</code></p>
+<p>输出: <code>1 ( 2 ( 4 ) ) ( 3 )</code></p>
+<p>解释: 初步转化后得到 <code>1 ( 2 (4) () () ) ( 3 () () )</code>;</p>
+<hr>
+</blockquote>
+<p>由题目可知,需要得到前序遍历的结果,即”<code>根</code>,<code>左子树</code>,<code>右子树</code>“;</p>
+<p>且示例中得到当左右子树为空时则不需要括号,左子树为空右子树不为空时左子树需要括号,右子树为空时括号省略;</p>
+<p>解题思路:</p>
+<blockquote>
+<p>该题的解题思路即为采用分治的思路,将问题按照前序遍历的方式(“<code>根</code>,<code>左子树</code>,<code>右子树</code>“)化为对应的结果;</p>
+<p>返回值为<code>string</code>,所以当返回结果为数字时可以使用<code>to_string()</code>函数将数字结果转化为<code>string</code>返回;</p>
+<p>根据前序遍历结果初步操作可以为:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> <span class="function">string <span class="title">tree2str</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">     <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span><span class="string">&quot;&quot;</span>;<span class="comment">//当节点为空时不予操作返回空字符串</span></span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> <span class="built_in">to_string</span>(root-&gt;val) + <span class="string">&quot;(&quot;</span> + <span class="built_in">tree2str</span>(root-&gt;left) + <span class="string">&quot;)&quot;</span> + <span class="string">&quot;(&quot;</span> + <span class="built_in">tree2str</span>(root-&gt;right) + <span class="string">&quot;)&quot;</span><span class="comment">//问题转化为子问题即采用前序遍历的方式对其进行处理</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>以示例1为例这里运行的结果为<code>1 ( 2 (4) () () ) ( 3 () () )</code>;</p>
+<p>接下来进行特殊处理:</p>
+<p>当节点左右都为空时只需要返回节点本身的<code>val</code>;</p>
+<p>当节点左为空又不为空时默认打印出左节点<code>val</code>及左节点的<code>()</code>;</p>
+<p>当右节点为空左节点不为空时只打印左节点<code>val</code>以及所对应的<code>()</code>;</p>
+<hr>
+</blockquote>
+<p>最终代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">tree2str</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span><span class="string">&quot;&quot;</span>;<span class="comment">//节点为空返回空字符串</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left == root-&gt;right &amp;&amp; root-&gt;left == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">to_string</span>(root-&gt;val);<span class="comment">//左右子树都为空只返回该节点的val值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;right == <span class="literal">nullptr</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">to_string</span>(root-&gt;val) + <span class="string">&quot;(&quot;</span> + <span class="built_in">tree2str</span>(root-&gt;left) + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">            <span class="comment">//右节点为空但左节点不为空时不打印右节点对应的()</span></span><br><span class="line">            <span class="comment">//左节点为空但右节点不为空时默认打印即可</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">to_string</span>(root-&gt;val) + <span class="string">&quot;(&quot;</span> + <span class="built_in">tree2str</span>(root-&gt;left) + <span class="string">&quot;)&quot;</span> + <span class="string">&quot;(&quot;</span> + <span class="built_in">tree2str</span>(root-&gt;right) + <span class="string">&quot;)&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二叉树的层序遍历-分层遍历"><a href="#二叉树的层序遍历-分层遍历" class="headerlink" title="二叉树的层序遍历(分层遍历)"></a>二叉树的层序遍历(分层遍历)</h2><p>链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal/">https://leetcode.cn/problems/binary-tree-level-order-traversal/</a></p>
+<p>题目描述:</p>
+<blockquote>
+<p>给你二叉树的根节点 <code>root</code> ，返回其节点值的 <strong>层序遍历</strong> 。 (即逐层地，从左到右访问所有节点)。</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220145356.png"></p>
+<p>输入 ：<code>root = [3,9,20,null,null,15,7]</code>;<br>输出 ：<code>[[3],[9,20],[15,7]];</code></p>
+<hr>
+</blockquote>
+<p>由题可知,该题需要进行层序遍历,且使用<code>C++</code>解答时需要返回对应的二维数组;</p>
+<p>解题思路:</p>
+<blockquote>
+<p>该题的解题思路与层序遍历如出一辙,可以使用<code>queue</code>容器对应的将节点进行保存;</p>
+<p>且当访问一个根节点就代入对应的左右节点;</p>
+<p>当然在入左右节点时需要判断节点是否为空,避免在对节点进行访问的时候出现非法的空指针引用;</p>
+<hr>
+</blockquote>
+<p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">levelOrder</span>(TreeNode* root) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//返回一个vector&lt;vector&lt;int&gt;&gt; ,</span></span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ret;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span> ret;<span class="comment">//若是节点为空则直接返回一个空的vector&lt;vector&lt;int&gt;&gt;</span></span><br><span class="line"></span><br><span class="line">        queue&lt;TreeNode*&gt; qLeve;<span class="comment">//创建一个队列(LILO容器)保证能将数据节点按照顺序进行访问,且按照顺序进行父节点出子节点入的方式进行;</span></span><br><span class="line">        </span><br><span class="line">        qLeve.<span class="built_in">push</span>(root);<span class="comment">//为了保证下面的循环条件,先将根节点入队列</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span>(!qLeve.<span class="built_in">empty</span>())&#123;<span class="comment">//当根节点不为空时进行循环</span></span><br><span class="line">            </span><br><span class="line">            <span class="type">size_t</span> leveSize = qLeve.<span class="built_in">size</span>();</span><br><span class="line">            <span class="comment">//使用队列的queue::size()属性判断这次所入队列为多少需要进行几层判断</span></span><br><span class="line">            <span class="comment">//如第一层的节点只有一个节点(根节点),所以该层的数据只有一个</span></span><br><span class="line">            </span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; tmpV;<span class="comment">//创建临时的vector用来返回每层的vector</span></span><br><span class="line">            <span class="keyword">while</span>(leveSize--)&#123;</span><br><span class="line">                tmpV.<span class="built_in">push_back</span>(qLeve.<span class="built_in">front</span>()-&gt;val);<span class="comment">//在vector中插入对应的数据</span></span><br><span class="line">				</span><br><span class="line">                <span class="comment">//当一个节点出队时需要入其对应的左右子树</span></span><br><span class="line">                <span class="keyword">if</span>(qLeve.<span class="built_in">front</span>()-&gt;left) qLeve.<span class="built_in">push</span>(qLeve.<span class="built_in">front</span>()-&gt;left) ;</span><br><span class="line">                <span class="keyword">if</span>(qLeve.<span class="built_in">front</span>()-&gt;right) qLeve.<span class="built_in">push</span>(qLeve.<span class="built_in">front</span>()-&gt;right) ;</span><br><span class="line"></span><br><span class="line">                qLeve.<span class="built_in">pop</span>();<span class="comment">//出节点</span></span><br><span class="line">            &#125;</span><br><span class="line">            ret.<span class="built_in">push_back</span>(tmpV);<span class="comment">//将临时的vector放入至需要返回的vector&lt;vector&lt;int&gt;&gt;容器中</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;<span class="comment">//返回二维数组</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二叉树的层序遍历-分层遍历-Ⅱ"><a href="#二叉树的层序遍历-分层遍历-Ⅱ" class="headerlink" title="二叉树的层序遍历(分层遍历)Ⅱ"></a>二叉树的层序遍历(分层遍历)Ⅱ</h2><p>链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/description/">https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/description/</a></p>
+<p>题目描述:</p>
+<blockquote>
+<p>给你二叉树的根节点 <code>root</code> ，返回其节点值 <strong>自底向上的层序遍历</strong> 。 （即按从叶子节点所在层到根节点所在的层，逐层从左向右遍历）;</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220145356.png"></p>
+<p>输入 ：<code>root = [3,9,20,null,null,15,7]</code>;<br>输出 ：<code>[[15,7],[9,20],[3]]</code>;</p>
+<hr>
+</blockquote>
+<p>解题思路:</p>
+<blockquote>
+<p>解题思路即为上题代码,当最终的<code>vector&lt;vector&lt;int&gt;&gt;</code>成型之后,将该容器对象使用<code>reverse()</code>函数进行逆置;</p>
+<p>代码不再进行赘述;</p>
+</blockquote>
+<hr>
+<h2 id="二叉树的最近公共祖先"><a href="#二叉树的最近公共祖先" class="headerlink" title="二叉树的最近公共祖先"></a>二叉树的最近公共祖先</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/description/">https://leetcode.cn/problems/lowest-common-ancestor-of-a-binary-tree/description/</a></p>
+<p>题目描述:</p>
+<blockquote>
+<p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/8918834?fr=aladdin">百度百科</a>中最近公共祖先的定义为：“对于有根树 T 的两个节点 p、q，最近公共祖先表示为一个节点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（<strong>一个节点也可以是它自己的祖先</strong>）。”</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220151446.png"></p>
+<p>需要注意在这题当中题目描述给出注意事项:</p>
+<blockquote>
+<p>两个节点必定存在于该树中;</p>
+<p>且两棵树的节点树 <code>left.size() == right.size()</code>;</p>
+</blockquote>
+<p>示例1:</p>
+<p>输入：root &#x3D; <code>[3,5,1,6,2,0,8,null,null,7,4]</code>, <code>p = 5</code>, <code>q = 1</code><br>输出：<code>3</code><br>解释：节点 5 和节点 1 的最近公共祖先是节点 3 。</p>
+<p>示例2:</p>
+<p>输入：root &#x3D; <code>[3,5,1,6,2,0,8,null,null,7,4]</code>, <code>p = 5</code>, <code>q = 4</code><br>输出：<code>5</code><br>解释：节点 5 和节点 4 的最近公共祖先是节点 5 。因为根据定义最近公共祖先节点可以为节点本身;</p>
+<hr>
+</blockquote>
+<p>从题目描述可知对应的最近公共祖先的概念;</p>
+<p>解题思路:</p>
+<p>思路1(暴力解法):</p>
+<blockquote>
+<p>思路1的方法及为创建一个子函数,根据子函数来判断两个节点是否存在于该节点的左子树于右子树;</p>
+<p>当节点存在于该节点的左子树与右子树则代表该节点即为两个节点的最近公共祖先;</p>
+<hr>
+</blockquote>
+<p>思路2(DFS):</p>
+<blockquote>
+<p>思路2的方式即为一样采取子函数的方式,利用两个栈<code>LIFO</code>的特性来获取两个节点对应的路径;</p>
+<p>首先需要确保两条路径的长度相同,及长度较长的部分必定不为最近公共祖先,将长度较长的栈容器将元素<code>pop()</code>至两个容器的长度相等;</p>
+<p>再根据容器的路径判断其中最先相同的最近公共祖先;</p>
+<hr>
+</blockquote>
+<p>思路3(DFS):</p>
+<blockquote>
+<p>思路3的方式与思路2 的方式相当,但是不需要子函数;</p>
+<p>思路即为采用递归的方式判断左右两个子树,当节点访问至两个节点的其中一个节点时返回该节点;</p>
+<p>遇到空<code>nullptr</code>时返回空指针;</p>
+<p>当节点左子树为空时返回右子树的结果(表示最近公共祖先不存在与该节点与该节点的左子树);</p>
+<p>当节点右子树为空时返回左子树的结果(表示最近公共祖先不存在与该节点与该节点的右子树);</p>
+<p>当两者都不为空时则表示该节点即为两个节点的最近公共祖先;</p>
+<hr>
+</blockquote>
+<p>最终代码:</p>
+<p>思路1(暴力解法):</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">IsinLeft</span><span class="params">(TreeNode*tofind, TreeNode*cur)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(cur == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>; <span class="comment">//如果该节点为空节点则返回false</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(cur-&gt;val == tofind-&gt;val) <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//如果该节点即为所寻找的节点返回true</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//该处操作则表示该节点不为最近公共祖先,需要向下继续遍历</span></span><br><span class="line">        <span class="type">bool</span> tmpleft = <span class="built_in">IsinLeft</span>(tofind, cur-&gt;left) ;</span><br><span class="line">        <span class="keyword">if</span>(tmpleft) <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//如果该节点左子树的结果为真则表示存在于该节点的左子树</span></span><br><span class="line">        </span><br><span class="line">        <span class="type">bool</span> tmpright = <span class="built_in">IsinLeft</span>(tofind,cur-&gt;right);</span><br><span class="line">        <span class="keyword">if</span>(tmpright) <span class="keyword">return</span> <span class="literal">true</span>;<span class="comment">//如果该节点右子树的结果为真则表示存在于该节点的右子树</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//思路为递归思路，且需要一个子函数用于判断两个节点的位置</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>( root == p || root == q ) &#123;</span><br><span class="line">            <span class="comment">//如果两个节点其中一个节点为root节点那么说明root节点结尾最近的公共祖先</span></span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//判断p节点于q节点是否存在于左右子树当中</span></span><br><span class="line">        <span class="type">bool</span> pInleft = <span class="built_in">IsinLeft</span>(p,root-&gt;left);</span><br><span class="line">        <span class="type">bool</span> pInright = !pInleft;</span><br><span class="line"></span><br><span class="line">        <span class="type">bool</span> qInleft  = <span class="built_in">IsinLeft</span>(q,root-&gt;left);</span><br><span class="line">        <span class="type">bool</span> qInright  = !qInleft;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(( pInleft &amp;&amp; qInright ) || ( qInleft &amp;&amp; pInright ))&#123;</span><br><span class="line">            <span class="comment">//这个判断表示这个节点即为最近的公共祖先</span></span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;</span><br><span class="line">		</span><br><span class="line">        <span class="comment">//如果两个节点都在该树的左子树当中则不再去右子树遍历,应遍历其左子树,反则遍历其右子树</span></span><br><span class="line">        <span class="keyword">if</span>(pInleft &amp;&amp; qInleft) <span class="keyword">return</span> <span class="built_in">lowestCommonAncestor</span>(root-&gt;left,p,q);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">lowestCommonAncestor</span>(root-&gt;right,p,q);</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>思路1的题解思路较好理解,但是其代码过于复杂,时间复杂度过高<code>O(N^2)</code>,即极端情况下需要遍历所有节点<code>N</code>,且所有节点都需要再次进行遍历(递归)<code>N</code>;</p>
+<hr>
+</blockquote>
+<p>思路2:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//思路2 :使用两个栈来存放路径 寻找两个节点的路径判断路径中最近公共祖先</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">GetPath</span><span class="params">(TreeNode* root,TreeNode*tofind,stack&lt;TreeNode*&gt; &amp;path)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">false</span>;<span class="comment">//空节点即未找到 返回false</span></span><br><span class="line"></span><br><span class="line">        path.<span class="built_in">push</span>(root);<span class="comment">//先对节点进行插入再进行判断</span></span><br><span class="line">        <span class="keyword">if</span>(path.<span class="built_in">top</span>()-&gt;val == tofind-&gt;val)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">GetPath</span>(root-&gt;left,tofind,path)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">GetPath</span>(root-&gt;right,tofind,path)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//说明节点的左右节点都为空需要对该节点进行出栈且返回false</span></span><br><span class="line">        path.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == p || root == q) <span class="keyword">return</span> root;</span><br><span class="line"></span><br><span class="line">        stack&lt;TreeNode*&gt; pPath;</span><br><span class="line">        stack&lt;TreeNode*&gt; qPath;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">GetPath</span>(root,p,pPath);<span class="comment">//调用子函数使得每个栈都能获取对应的路径</span></span><br><span class="line">        <span class="built_in">GetPath</span>(root,q,qPath);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//路径获取完毕之后对路径进行处理</span></span><br><span class="line">        <span class="keyword">while</span>(pPath.<span class="built_in">size</span>()!=qPath.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="keyword">if</span>(pPath.<span class="built_in">size</span>() &gt; qPath.<span class="built_in">size</span>())</span><br><span class="line">                <span class="comment">//但凡其中一个size大都表示不为公共祖先需要出栈</span></span><br><span class="line">                pPath.<span class="built_in">pop</span>();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(pPath.<span class="built_in">size</span>() &lt; qPath.<span class="built_in">size</span>())</span><br><span class="line">                qPath.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//此处两个路径的大小已经相同,判断两个路径中的最近公共祖先</span></span><br><span class="line">        <span class="keyword">while</span>(pPath.<span class="built_in">top</span>()!=qPath.<span class="built_in">top</span>())&#123;</span><br><span class="line">            qPath.<span class="built_in">pop</span>();</span><br><span class="line">            pPath.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> pPath.<span class="built_in">top</span>();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该方法在时间发杂度中大于思路1的暴力解法;</p>
+<hr>
+</blockquote>
+<p>思路3:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">TreeNode* <span class="title">lowestCommonAncestor</span><span class="params">(TreeNode* root, TreeNode* p, TreeNode* q)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        <span class="comment">//如果root节点为空时直接返回避免对空指针非法解引用</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(root == p || root == q) <span class="keyword">return</span> root;</span><br><span class="line">        <span class="comment">//当root 为p或是q时说明这个节点为最近的公共祖先;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//使用两个指针来保存遍历的结果</span></span><br><span class="line">        TreeNode* left = <span class="built_in">lowestCommonAncestor</span>(root-&gt;left, p,q);</span><br><span class="line">        TreeNode* right = <span class="built_in">lowestCommonAncestor</span>(root-&gt;right, p,q);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//当左为空时表示左子树不存在其中一个节点返回右子树结果</span></span><br><span class="line">        <span class="keyword">if</span>(left == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> right;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//当右为空时表示右子树不存在其中一个节点返回左子树结果</span></span><br><span class="line">        <span class="keyword">if</span>(right == <span class="literal">nullptr</span>)</span><br><span class="line">            <span class="keyword">return</span> left;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//当两个指针的返回结果都不为空时即表示该节点为两个节点的最近公共祖先</span></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="二叉搜索树与双向链表"><a href="#二叉搜索树与双向链表" class="headerlink" title="二叉搜索树与双向链表"></a>二叉搜索树与双向链表</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://www.nowcoder.com/share/jump/7318725821703061664396">https://www.nowcoder.com/share/jump/7318725821703061664396</a></p>
+<p>题目描述 : </p>
+<blockquote>
+<p>输入一棵二叉树,将二叉树转换成一个排序的双向链表;</p>
+<p>如下图所示:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220164236.png"></p>
+<p>数据范围 : 输入二叉树的节点数 0 ≤ n ≤ 10000 ≤  n ≤ 1000，二叉树中每个节点的值 0 ≤ val ≤ 10000 ≤ val ≤ 1000<br>要求：**空间复杂度O ( 1 )**（即在原树上操作），时间复杂度 O ( n )</p>
+<p>注意:</p>
+<blockquote>
+<p>1.要求不能创建任何新的结点，只能调整树中结点指针的指向。当转化完成以后，树中节点的左指针需要指向前驱，树中节点的右指针需要指向后继<br>2.返回链表中的第一个节点的指针<br>3.函数返回的TreeNode，有左右指针，其实可以看成一个双向链表的数据结构</p>
+<p>4.你不用输出双向链表，程序会根据你的返回值自动打印输出</p>
+</blockquote>
+<p>输入描述 : 二叉树的根节点</p>
+<p>返回值描述 : 双向链表的其中一个头节点;</p>
+<p>示例1:</p>
+<p>输入 : <code>&#123;10,6,14,4,8,12,16&#125;</code></p>
+<p>返回值 : <code>From left to right are:4,6,8,10,12,14,16;From right to left are:16,14,12,10,8,6,4;</code></p>
+<p>说明 : 输入题面图中二叉树,输出的时候将双向链表的头节点返回即可;</p>
+</blockquote>
+<p>解图思路:</p>
+<p>思路1:</p>
+<blockquote>
+<p>该题若是没有空间复杂度限制的情况可以采用另一容器<code>vector&lt;TreeNode&gt;</code>对其中的节点利用中序遍历进行重新排布;</p>
+<p>再遍历<code>vector</code>对象以双指针前后指针的方式重新将节点进行排布即可;</p>
+<hr>
+</blockquote>
+<p>思路2:</p>
+<blockquote>
+<p>思路2的方式与思路1的方式类似,即在原树当中采用类似前后指针的方式对该树进行访问;</p>
+<p>创建一个子函数;</p>
+<p>利用递归的方式一个指针记录前一个节点,一个指针记录后一个节点实现在原树中重排;</p>
+<hr>
+</blockquote>
+<p>代码:</p>
+<p>思路1:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">    int val;</span></span><br><span class="line"><span class="comment">    struct TreeNode *left;</span></span><br><span class="line"><span class="comment">    struct TreeNode *right;</span></span><br><span class="line"><span class="comment">    TreeNode(int x) :</span></span><br><span class="line"><span class="comment">            val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">InOrder</span><span class="params">(TreeNode*root , vector&lt;TreeNode*&gt; &amp;V)</span></span>&#123;</span><br><span class="line">        <span class="comment">//存在搜索二叉树,利用中序遍历将其节点按照顺序进行保存</span></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">InOrder</span>(root-&gt;left, V);</span><br><span class="line">        V.<span class="built_in">push_back</span>(root);</span><br><span class="line">        <span class="built_in">InOrder</span>(root-&gt;right, V);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function">TreeNode* <span class="title">Convert</span><span class="params">(TreeNode* pRootOfTree)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pRootOfTree == <span class="literal">nullptr</span>) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        vector&lt;TreeNode*&gt; v;</span><br><span class="line">        <span class="built_in">InOrder</span>(pRootOfTree, v);</span><br><span class="line">  </span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> Vleft = <span class="number">0</span>,Vright = Vleft+<span class="number">1</span>;Vright&lt;v.<span class="built_in">size</span>();Vleft++,Vright++)&#123;</span><br><span class="line">            v[Vleft]-&gt;right = v[Vright];</span><br><span class="line">            v[Vright]-&gt;left = v[Vleft];</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">        TreeNode* cur = v[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            cout&lt;&lt;cur-&gt;val&lt;&lt;<span class="string">&quot; &quot;</span>;</span><br><span class="line">            cur = cur-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">  </span><br><span class="line">        <span class="keyword">return</span> v[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该方法并不符合题意,但在OJ题中可以通过;</p>
+<hr>
+</blockquote>
+<p>思路2:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">struct TreeNode &#123;</span></span><br><span class="line"><span class="comment">	int val;</span></span><br><span class="line"><span class="comment">	struct TreeNode *left;</span></span><br><span class="line"><span class="comment">	struct TreeNode *right;</span></span><br><span class="line"><span class="comment">	TreeNode(int x) :</span></span><br><span class="line"><span class="comment">			val(x), left(NULL), right(NULL) &#123;</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">&#125;;*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">//题目要求原地算法要求空间复杂度为O(1) </span></span><br><span class="line">	<span class="type">void</span> _Convert(TreeNode*&amp; prev , TreeNode*cur)&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(cur == <span class="literal">nullptr</span>) <span class="keyword">return</span> ;<span class="comment">//当节点为空时不做处理</span></span><br><span class="line">		</span><br><span class="line">        <span class="comment">//采用中序遍历的方式进行遍历</span></span><br><span class="line">		_Convert(prev , cur-&gt;left);</span><br><span class="line"></span><br><span class="line">		cur-&gt;left = prev;</span><br><span class="line">        <span class="comment">//由于参数为*&amp;指针引用,即该指针即为上一个指针的节点</span></span><br><span class="line">        <span class="comment">//可以采用上一个指针的节点的right来指向该指针实现双向</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">//判断prev是否为空避免对空指针的非法解引用</span></span><br><span class="line">		<span class="keyword">if</span>(prev) prev-&gt;right = cur;</span><br><span class="line">		prev = cur;</span><br><span class="line"></span><br><span class="line">		 _Convert(prev , cur-&gt;right);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">Convert</span><span class="params">(TreeNode* pRootOfTree)</span> </span>&#123;</span><br><span class="line">		TreeNode* prev = <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">		_Convert(prev,pRootOfTree);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//根据该节点找到链表的头节点从而返回对应的链表头节点</span></span><br><span class="line">		TreeNode* head = pRootOfTree;</span><br><span class="line">		<span class="keyword">while</span>(head&amp;&amp;head-&gt;left)&#123;</span><br><span class="line">			head = head-&gt;left;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> head;<span class="comment">//返回头节点</span></span><br><span class="line">		</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="从前序与中序遍历序列构造二叉树"><a href="#从前序与中序遍历序列构造二叉树" class="headerlink" title="从前序与中序遍历序列构造二叉树"></a>从前序与中序遍历序列构造二叉树</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/</a></p>
+<p>题目描述 : </p>
+<blockquote>
+<p>给定两个整数数组<code>preorder</code> 和 <code>inorder</code> ,其中<code>preorder</code> 是二叉树的先序遍历, <code>inorder</code> 是同一棵树的中序遍历,请构造二叉树并返回其根节点;</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220174044.png"></p>
+<p>输入: <code>preorder = [3,9,20,15,7]</code>, <code>inorder = [9,3,15,20,7]</code><br>输出: <code>[3,9,20,null,null,15,7]</code></p>
+</blockquote>
+<p>其中该题给出提示:</p>
+<ul>
+<li><code>preorder</code> 与 <code>inorder</code> 均无重复元素;</li>
+<li><code>inorder</code> 均出现在 <code>preorder</code>中;</li>
+<li><code>preorder</code> 保证为二叉树的前序遍历序列;</li>
+<li><code>inorder</code> 保证为二叉树中的中序遍历序列;</li>
+</ul>
+<p>解题思路:</p>
+<blockquote>
+<p>该题的思路即为类似快速排序思路使用前序遍历确定树与各个子树的根节点并利用中序遍历判断左右区间,分别分为<code>[ inbegin , mid-1 ] mid [ mid+1 , inend ]</code>的方式对中序遍历进行分治;</p>
+<p>当节点为根节点的时候可以直接创建节点;</p>
+<p>创建节点之后由于该节点为每次递归的根节点所以需要根据中序遍历来判断中间节点位置并根据中间节点区分出左右子区间;</p>
+<p>当区分出左右子区间时则可以继续递归(按照前序遍历);</p>
+<p>最后应该注意:</p>
+<p>由于该题思路为区间思路,所以可能出现区间不存在的可能,即当区间不存在时则不能再继续向下访问应该及时返回空指针;</p>
+</blockquote>
+<p>最终代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode() : val(0), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    TreeNode* _buildTree(vector&lt;<span class="type">int</span>&gt;&amp; preorder, vector&lt;<span class="type">int</span>&gt;&amp; inorder,<span class="type">int</span>&amp; cur,<span class="type">int</span> inbegin,<span class="type">int</span> inend)&#123;</span><br><span class="line">        <span class="comment">//利用子函数来进行递归,该思路类似于快速排序,将问题以分治的思路划分为子问题;</span></span><br><span class="line">        <span class="comment">/* </span></span><br><span class="line"><span class="comment">         * 其中两个vector为题目所给分别为前序与中序遍历序列</span></span><br><span class="line"><span class="comment">         * cur用来遍历前序遍历序列确定每棵子树的根节点位置</span></span><br><span class="line"><span class="comment">         * inbegin 与 inend 来区分中序遍历序列中的左右子区间</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(inbegin&gt;inend) <span class="keyword">return</span> <span class="literal">nullptr</span>;<span class="comment">//最后添加:由于为区间分布,所以可能出现区间不存在的可能,当区间不存在时则不能再向下遍历应当返回空指针</span></span><br><span class="line"></span><br><span class="line">         TreeNode* newnode = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(preorder[cur]);<span class="comment">//利用前序遍历序列创建节点</span></span><br><span class="line"></span><br><span class="line">         <span class="type">int</span> mid = inbegin;</span><br><span class="line">         <span class="keyword">while</span>(mid&lt;=inend)&#123; <span class="comment">//循环条件:只剩最后一个节点的时候也仍需进行分治思路进行递归</span></span><br><span class="line">            <span class="keyword">if</span>(inorder[mid] == preorder[cur]) <span class="keyword">break</span>;    </span><br><span class="line">            <span class="comment">//判断mid所在位置在中序遍历中的位置从而进行区分中序遍历中的左右子区间</span></span><br><span class="line">            ++mid;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         ++cur;<span class="comment">//将cur指针自增用于遍历下一个前序遍历中的节点</span></span><br><span class="line">         </span><br><span class="line">         <span class="comment">//分别递归,当返回时节点被链接</span></span><br><span class="line">         newnode-&gt;left = _buildTree(preorder,inorder,cur,inbegin,mid<span class="number">-1</span>);</span><br><span class="line">         newnode-&gt;right = _buildTree(preorder,inorder,cur,mid+<span class="number">1</span>,inend);</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">return</span> newnode;<span class="comment">//返回节点</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; preorder, vector&lt;<span class="type">int</span>&gt;&amp; inorder)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cur = <span class="number">0</span>;<span class="comment">//子函数中的cur为引用,不能直接传参常量</span></span><br><span class="line">        <span class="keyword">return</span> _buildTree(preorder,inorder,cur,<span class="number">0</span>,preorder.<span class="built_in">size</span>()<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="从中序遍历与后序遍历序列构造二叉树"><a href="#从中序遍历与后序遍历序列构造二叉树" class="headerlink" title="从中序遍历与后序遍历序列构造二叉树"></a>从中序遍历与后序遍历序列构造二叉树</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/</a></p>
+<p>题目描述:</p>
+<blockquote>
+<p>给定两个整数数组 <code>inorder</code> 和 <code>postorder</code> ，其中 <code>inorder</code> 是二叉树的中序遍历， <code>postorder</code> 是同一棵树的后序遍历，请你构造并返回这颗 <em>二叉树</em> 。</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231220222735.png"></p>
+<p>输入：<code>inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]</code>;<br>输出：<code>[3,9,20,null,null,15,7]</code>;</p>
+</blockquote>
+<p>从题目描述中可以看出该题与上一题的思路如出一辙;</p>
+<p>解题思路:</p>
+<blockquote>
+<p>该题的思路与<code>[从前序与中序遍历序列构造二叉树]</code>十分相似,唯一不同的是一个给的是前序遍历序列,一个给的是后序遍历序列;</p>
+<p>其思路也大致相同,即采用中序遍历序列来判断左右子区间,用后序遍历序列来判断根节点;</p>
+<hr>
+</blockquote>
+<p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">         TreeNode* _buildTree(vector&lt;<span class="type">int</span>&gt;&amp; inorder, vector&lt;<span class="type">int</span>&gt;&amp; postorder,<span class="type">int</span>&amp; cur,<span class="type">int</span> inbegin,<span class="type">int</span> inend)&#123;</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line">         <span class="keyword">if</span>(inbegin&gt;inend) <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line"></span><br><span class="line">         TreeNode* newnode = <span class="keyword">new</span> <span class="built_in">TreeNode</span>(postorder[cur]);</span><br><span class="line"></span><br><span class="line">         <span class="type">int</span> mid = inbegin;</span><br><span class="line">         <span class="keyword">while</span>(mid&lt;=inend)&#123; </span><br><span class="line">            <span class="keyword">if</span>(inorder[mid] == postorder[cur]) <span class="keyword">break</span>;    </span><br><span class="line">            ++mid;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         --cur;</span><br><span class="line">        </span><br><span class="line">         newnode-&gt;right = _buildTree(inorder,postorder,cur,mid+<span class="number">1</span>,inend);</span><br><span class="line">         newnode-&gt;left = _buildTree(inorder,postorder,cur,inbegin,mid<span class="number">-1</span>);</span><br><span class="line">         </span><br><span class="line">         <span class="keyword">return</span> newnode;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">TreeNode* <span class="title">buildTree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; inorder, vector&lt;<span class="type">int</span>&gt;&amp; postorder)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cur = postorder.<span class="built_in">size</span>() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> _buildTree(inorder, postorder, cur, <span class="number">0</span>, inorder.<span class="built_in">size</span>() - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="二叉树的前序遍历-非递归迭代"><a href="#二叉树的前序遍历-非递归迭代" class="headerlink" title="二叉树的前序遍历(非递归迭代)"></a>二叉树的前序遍历(非递归迭代)</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-preorder-traversal/">https://leetcode.cn/problems/binary-tree-preorder-traversal/</a></p>
+<p>题目描述 : </p>
+<blockquote>
+<p> 给定一个二叉树的根节点<code>root</code> , 返回它节点值的 <code>前序</code> 遍历;</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231221092126.png"></p>
+<p>输入 : <code>root = [ 1 , null , 2 , 3 ]</code>;</p>
+<p>输出:<code>[ 1 , 2 , 3 ]</code>;</p>
+<hr>
+</blockquote>
+<p>解题思路:</p>
+<blockquote>
+<p>利用<code>C++</code>完成这道题时需要返回一个<code>vector&lt;int&gt;;</code></p>
+<p>该题以递归的思路来做的话会较为简单,根据每次递归子树时将会遇到的情况做特殊处理并将其放到一个<code>vector&lt;int&gt;</code>容器当中并返回;</p>
+<p>而若是非递归的话则不能使用递归的这种思路;</p>
+<p>但是使用非递归的话可以利用其他的容器对树中的节点做处理;</p>
+<p>就以该题前序遍历为例;</p>
+<p>前序遍历的路径(子树访问的顺序)为<code>根,左子树,右子树</code>;</p>
+<p>这里不以示例1为例,以该图为例;</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231221092823.png"></p>
+<p>这棵树以前序遍历最终得到的结果为<code>[ 10 , 6 , 4 , 8 , 14 , 12 , 16 ] </code>;</p>
+<p>即其可以看成左路节点与左路节点右子树的左路节点,将问题化为子问题;</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231221094408.png"></p>
+<p>以该图为例即为将一棵树分为左路节点以及左路节点的右子树;</p>
+<p>将问题划分为子问题;</p>
+<p>可以使用一个<code>stack</code>容器(栈),根据其<code>LIFO</code>的特性将数据进行存储,并且反向拿出,即以该树的左路节点为例,将左路节点全部入栈,当栈顶左路节点被出时访问它的右子树;</p>
+<p>该种方式不是递归但是思路上胜似递归;</p>
+<hr>
+</blockquote>
+<p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; st;<span class="comment">//用来存放左路节点</span></span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ret;<span class="comment">//用来做返回</span></span><br><span class="line"></span><br><span class="line">        TreeNode *cur = root;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!st.<span class="built_in">empty</span>() || cur)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//节点必定存在,要么在栈中要么为cur所在位置</span></span><br><span class="line">            <span class="comment">//故当栈不为空或者cur不为nullptr时将其入队列</span></span><br><span class="line">            st.<span class="built_in">push</span>(cur);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//由于该遍历方式为前序遍历即 (根,左子树,右子树) 故该节点可以直接访问</span></span><br><span class="line">            ret.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">            cur = cur-&gt;left;<span class="comment">//遍历左路节点</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//每次去访问栈顶元素(左路节点)的右子树</span></span><br><span class="line">            TreeNode*top = st.<span class="built_in">top</span>();</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">            cur = top-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="二叉树的中序遍历-非递归迭代"><a href="#二叉树的中序遍历-非递归迭代" class="headerlink" title="二叉树的中序遍历(非递归迭代)"></a>二叉树的中序遍历(非递归迭代)</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-inorder-traversal/description/">https://leetcode.cn/problems/binary-tree-inorder-traversal/description/</a></p>
+<p>题目描述 : </p>
+<blockquote>
+<p>给定一个二叉树的根节点 <code>root</code> ,返回它的中序遍历;</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231221092126.png"></p>
+<p>输入 : <code>root = [ 1 , null , 2 , 3 ]</code>;</p>
+<p>输出:<code>[ 1 , 3 , 2 ]</code>;</p>
+<hr>
+</blockquote>
+<p>解题思路: </p>
+<blockquote>
+<p>该题的解题思路与上一题二叉树的中序遍历如出一辙,即也是通过将树分为左路节点与左路节点的右子树的方式;</p>
+<p>但稍微不同的是,对于该题来说由于是以中序遍历即(左子树,根,右子树)的方式对树进行遍历,所以第一次对左路节点进行遍历时不能直接进行访问,当左子树访问完后才能访问这个子树的根节点(左路节点);</p>
+<p>大体上还是相同;</p>
+<hr>
+</blockquote>
+<p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">inorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ret;<span class="comment">//作为函数返回</span></span><br><span class="line"></span><br><span class="line">        stack&lt;TreeNode*&gt;st;<span class="comment">//用来访问左路节点及节点的右子树</span></span><br><span class="line"></span><br><span class="line">        TreeNode*cur = root;<span class="comment">//该指针用来遍历左路节点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(cur || !st.<span class="built_in">empty</span>())&#123;<span class="comment">//节点必定存在,要么在当前cur,要么在栈中,否则即为遍历结束</span></span><br><span class="line">            <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">                st.<span class="built_in">push</span>(cur);</span><br><span class="line">                <span class="comment">//将节点入栈,且在入栈时不能直接进行访问,当该节点的左子树被访问完毕才能访问该节点</span></span><br><span class="line">                </span><br><span class="line">                cur = cur-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line">            TreeNode* top = st.<span class="built_in">top</span>();</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="comment">//这个节点必定是这棵树(子树)的左路节点,根据中序遍历(左子树 根 右子树)的顺序可以访问该节点</span></span><br><span class="line">            ret.<span class="built_in">push_back</span>(top-&gt;val);</span><br><span class="line"></span><br><span class="line">            <span class="comment">//访问该左路节点的右子树</span></span><br><span class="line">            cur = top-&gt;right;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h2 id="二叉树的后序遍历-非递归迭代"><a href="#二叉树的后序遍历-非递归迭代" class="headerlink" title="二叉树的后序遍历(非递归迭代)"></a>二叉树的后序遍历(非递归迭代)</h2><p>题目链接 : <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/binary-tree-postorder-traversal/">https://leetcode.cn/problems/binary-tree-postorder-traversal/</a></p>
+<p>题目描述 : </p>
+<blockquote>
+<p>给你一棵二叉树的根节点 <code>root</code> ，返回其节点值的 <strong>后序遍历</strong> 。</p>
+<p>示例1:</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/20231221092126.png"></p>
+<p>输入：<code>root = [1,null,2,3]</code><br>输出：<code>[3,2,1]</code></p>
+<hr>
+</blockquote>
+<p>解题思路:</p>
+<p>思路1:</p>
+<blockquote>
+<p>思路1的思路即为将前序遍历进行修改,将其修改为(根,右子树,左子树)的访问顺序,再最后对结果进行一次逆置,即:后序遍历(左子树,右子树,根);</p>
+<p>这种方式的思路是可行的,但是若是需要边遍历边进行打印则不可取;</p>
+<p>该种方法本质上是一种取巧的办法,但是在该题中可以运行;</p>
+<hr>
+</blockquote>
+<p>思路2:</p>
+<blockquote>
+<p>以类似于前序与中序遍历的思路相同,但是唯一不同的是在前序遍历或者中序遍历时,前序遍历时根节点可以直接访问,而中序遍历时节点的左子树访问完毕后即可以访问根节点;</p>
+<p>而后序遍历与前序中序不同的是后序遍历必须将节点的左右子树都访问结束后才能访问根节点;</p>
+<p>由于也是按照左路节点与左路节点的右子树的左路节点将问题化为子问题进行迭代的思路,所以左路节点的左子树可以默认为已经访问完毕,此时只需要处理节点的右子树即可;</p>
+<p>当节点的右子树为<code>nullptr</code>时为了避免对空指针的非法解引用操作,所以当该节点的右子树为空时空间直接访问该节点;</p>
+<p>当该节点的右子树访问完毕时也可以访问该节点,那么问题是如何判断该节点的右子树是否被访问完毕?</p>
+<blockquote>
+<p>可以使用一个<code>prev</code>指针来记录每次所访问节点的位置,并将该位置记住,当在栈顶出取出节点时,如果该节点的右子树为空或者是该节点的右子树等于上次访问过的节点(即<code>prev</code>)时表示该节点的右子树已经被访问,可以直接访问该节点;</p>
+</blockquote>
+<hr>
+</blockquote>
+<p>代码:</p>
+<p>思路1:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; st;<span class="comment">//用来存放右路节点</span></span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ret;<span class="comment">//用来作返回</span></span><br><span class="line"></span><br><span class="line">        TreeNode *cur = root;<span class="comment">//用于遍历</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!st.<span class="built_in">empty</span>() || cur)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            <span class="comment">//节点必定存在,要么在栈中要么为cur所在位置</span></span><br><span class="line">            <span class="comment">//故当栈不为空或者cur不为nullptr时将其入队列</span></span><br><span class="line">            st.<span class="built_in">push</span>(cur);</span><br><span class="line">            </span><br><span class="line">            <span class="comment">//由于该遍历方式为变相的前序遍历 即 (根,右子树,左子树) 故该节点可以直接访问</span></span><br><span class="line">            ret.<span class="built_in">push_back</span>(cur-&gt;val);</span><br><span class="line">            cur = cur-&gt;right;<span class="comment">//遍历右路节点</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//每次去访问栈顶元素(右路节点)的左子树</span></span><br><span class="line">            TreeNode*top = st.<span class="built_in">top</span>();</span><br><span class="line">            st.<span class="built_in">pop</span>();</span><br><span class="line">            cur = top-&gt;left;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//得出的结果即为 (根,右子树,左子树),逆置后即为 (左子树,右子树,根)即为后序遍历顺序;</span></span><br><span class="line">        <span class="built_in">reverse</span>(ret.<span class="built_in">begin</span>(),ret.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>该思路为前序遍历的修改并采用逆置得到后序遍历的结果;</p>
+<hr>
+</blockquote>
+<p>思路2:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">postorderTraversal</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">        stack&lt;TreeNode*&gt; st;<span class="comment">//用来存放左路节点</span></span><br><span class="line"></span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; ret;<span class="comment">//用来做返回</span></span><br><span class="line"></span><br><span class="line">        TreeNode *cur = root;<span class="comment">//遍历左路节点</span></span><br><span class="line">        </span><br><span class="line">        TreeNode*prev = <span class="literal">nullptr</span>; <span class="comment">//用来记录每个被访问的节点</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(!st.<span class="built_in">empty</span>() || cur)&#123;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">                <span class="comment">//遍历左路节点,这里遍历左路节点时只对左路节点进行入栈操作</span></span><br><span class="line">                <span class="comment">//由于是后序遍历所以第一次访问根节点的时候不能进行访问</span></span><br><span class="line">                st.<span class="built_in">push</span>(cur);</span><br><span class="line">                cur = cur-&gt;left;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            TreeNode*top = st.<span class="built_in">top</span>();<span class="comment">//取出栈顶节点并准备访问栈顶节点的右子树(左子树默认已经访问完毕)</span></span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span>(top-&gt;right == <span class="literal">nullptr</span> || prev == top-&gt;right)&#123;</span><br><span class="line">                <span class="comment">//当右子树为空时为了避免对空指针的非法解引用且没必要再对右子树进行访问</span></span><br><span class="line">                <span class="comment">//由于prev指针记录了每次上一次访问的节点,所以当prev == 该节点的右子树时则表示该节点的右子树已经被访问完毕</span></span><br><span class="line">                <span class="comment">//可以直接访问该节点</span></span><br><span class="line">                ret.<span class="built_in">push_back</span>(top-&gt;val);</span><br><span class="line">                st.<span class="built_in">pop</span>();</span><br><span class="line">                prev = top;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//表示该节点的右子树未被访问过,需要先访问该节点的右子树</span></span><br><span class="line">                cur = top-&gt;right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ret;<span class="comment">//返回结果</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/657d5d6fc458853aef737cf4.jpg" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/657d5d6fc458853aef737cf4.jpg" title="头像" alt="头像"></a><div class="post-copyright__author_name">飙马野郎</div><div class="post-copyright__author_desc">长风破浪会有时</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/')">二叉树OJ</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=二叉树OJ&amp;url=https://cherryings.github.io/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/&amp;pic=https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><script>function copyCurrentPageUrl() {
+  var currentPageUrl = window.location.href;
+  var input = document.createElement("input");
+  input.setAttribute("value", currentPageUrl);
+  document.body.appendChild(input);
+  input.select();
+  input.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+  document.body.removeChild(input);
+}</script><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="copyCurrentPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cherryings.github.io" target="_blank">飙马野郎</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/C/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>C++<span class="tagsPageCount">6</span></a></div></div><div class="post_share"><div class="social-share" data-image="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://cdn.cbd.int/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/12/17/BinarySearchTree%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">BinarySearchTree二叉搜索树</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/2023/12/17/BinarySearchTree%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" title="BinarySearchTree二叉搜索树"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-12-17</div><div class="title">BinarySearchTree二叉搜索树</div></div></a></div><div><a href="/2023/12/17/%E5%A4%9A%E6%80%81/" title="多态"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-12-17</div><div class="title">多态</div></div></a></div><div><a href="/2023/12/17/%E6%A8%A1%E6%9D%BF%E8%BF%9B%E9%98%B6/" title="模板进阶"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-12-17</div><div class="title">模板进阶</div></div></a></div><div><a href="/2023/12/17/%E7%BB%A7%E6%89%BF/" title="继承"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-12-17</div><div class="title">继承</div></div></a></div><div><a href="/2023/12/17/%E5%A4%9A%E7%BB%A7%E6%89%BF/" title="多继承"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2023-12-17</div><div class="title">多继承</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://pic.imgdb.cn/item/657d5d6fc458853aef737cf4.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" alt="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这里是<b style="color:#fff">小梁同志的博客</b>目前正在学习c/C++,MySQL,Linux操作系统,<b style="color:#fff">热爱学习</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">希望你可以在这里找到对你有用的<b style="color:#fff">知识</b> <b style="color:#fff"></b>。</div></div><div class="author-info__bottom-group"><a class="author-info__bottom-group-left" href="/"><h1 class="author-info__name">飙马野郎</h1><div class="author-info__desc">长风破浪会有时</div></a><div class="card-info-social-icons is-center"><a class="social-icon faa-parent animated-hover" href="https://github.com/cherryings?tab=repositories" target="_blank" title="Github"><i class="anzhiyufont anzhiyu-icon-github"></i></a></div></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bullhorn anzhiyu-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来看我的博客鸭~</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E4%BA%8C%E5%8F%89%E6%A0%91OJ%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">进阶二叉树OJ题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E4%BA%8C%E5%8F%89%E6%A0%91%E5%88%9B%E5%BB%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.1.</span> <span class="toc-text">根据二叉树创建字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86-%E5%88%86%E5%B1%82%E9%81%8D%E5%8E%86"><span class="toc-number">1.2.</span> <span class="toc-text">二叉树的层序遍历(分层遍历)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86-%E5%88%86%E5%B1%82%E9%81%8D%E5%8E%86-%E2%85%A1"><span class="toc-number">1.3.</span> <span class="toc-text">二叉树的层序遍历(分层遍历)Ⅱ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树的最近公共祖先</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%8E%E5%8F%8C%E5%90%91%E9%93%BE%E8%A1%A8"><span class="toc-number">1.5.</span> <span class="toc-text">二叉搜索树与双向链表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E5%89%8D%E5%BA%8F%E4%B8%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.6.</span> <span class="toc-text">从前序与中序遍历序列构造二叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86%E4%B8%8E%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86%E5%BA%8F%E5%88%97%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-number">1.7.</span> <span class="toc-text">从中序遍历与后序遍历序列构造二叉树</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%9D%9E%E9%80%92%E5%BD%92%E8%BF%AD%E4%BB%A3"><span class="toc-number">1.8.</span> <span class="toc-text">二叉树的前序遍历(非递归迭代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%9D%9E%E9%80%92%E5%BD%92%E8%BF%AD%E4%BB%A3"><span class="toc-number">1.9.</span> <span class="toc-text">二叉树的中序遍历(非递归迭代)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%90%8E%E5%BA%8F%E9%81%8D%E5%8E%86-%E9%9D%9E%E9%80%92%E5%BD%92%E8%BF%AD%E4%BB%A3"><span class="toc-number">1.10.</span> <span class="toc-text">二叉树的后序遍历(非递归迭代)</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/" title="二叉树OJ"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉树OJ"/></a><div class="content"><a class="title" href="/2023/12/17/%E4%BA%8C%E5%8F%89%E6%A0%91OJ/" title="二叉树OJ">二叉树OJ</a><time datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/17/BinarySearchTree%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" title="BinarySearchTree二叉搜索树"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="BinarySearchTree二叉搜索树"/></a><div class="content"><a class="title" href="/2023/12/17/BinarySearchTree%E6%90%9C%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" title="BinarySearchTree二叉搜索树">BinarySearchTree二叉搜索树</a><time datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/17/%E5%A4%9A%E6%80%81/" title="多态"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="多态"/></a><div class="content"><a class="title" href="/2023/12/17/%E5%A4%9A%E6%80%81/" title="多态">多态</a><time datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/17/%E6%A8%A1%E6%9D%BF%E8%BF%9B%E9%98%B6/" title="模板进阶"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模板进阶"/></a><div class="content"><a class="title" href="/2023/12/17/%E6%A8%A1%E6%9D%BF%E8%BF%9B%E9%98%B6/" title="模板进阶">模板进阶</a><time datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/17/%E7%BB%A7%E6%89%BF/" title="继承"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/4390bf8182568fb533d78daedfc07b26c82dad41.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="继承"/></a><div class="content"><a class="title" href="/2023/12/17/%E7%BB%A7%E6%89%BF/" title="继承">继承</a><time datetime="2023-12-17T02:29:07.000Z" title="发表于 2023-12-17 10:29:07">2023-12-17</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="workboard"><img class="workSituationImg boardsign" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-上班摸鱼中.svg" alt="距离月入25k也就还差一个大佬带我~" title="距离月入25k也就还差一个大佬带我~"/><div id="runtimeTextTip"></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2023 By <a class="footer-bar-link" href="/" title="飙马野郎" target="_blank">飙马野郎</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu" title="主题">主题</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">0</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://blog.csdn.net/2202_75303754?type=blog" title="CSND戳这里"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://my-blogger.oss-cn-beijing.aliyuncs.com/img/csdn%20(1).svg" alt="CSND戳这里"/><span class="back-menu-item-text">CSND戳这里</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于本人</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/essay/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 闲言碎语</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/C/" style="font-size: 0.88rem;">C++<sup>6</sup></a><a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 0.88rem;">数据结构<sup>1</sup></a></div></div><hr/></div></div><div id="keyboard-tips"><div class="keyboardTitle">博客快捷键</div><div class="keybordList"><div class="keybordItem"><div class="keyGroup"><div class="key">shift K</div></div><div class="keyContent"><div class="content">关闭快捷键功能</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift A</div></div><div class="keyContent"><div class="content">打开/关闭中控台</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift M</div></div><div class="keyContent"><div class="content">播放/暂停音乐</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift D</div></div><div class="keyContent"><div class="content">深色/浅色显示模式</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift S</div></div><div class="keyContent"><div class="content">站内搜索</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift R</div></div><div class="keyContent"><div class="content">随机访问</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift H</div></div><div class="keyContent"><div class="content">返回首页</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift F</div></div><div class="keyContent"><div class="content">友链鱼塘</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift L</div></div><div class="keyContent"><div class="content">友链页面</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift P</div></div><div class="keyContent"><div class="content">关于本站</div></div></div><div class="keybordItem"><div class="keyGroup"><div class="key">shift I</div></div><div class="keyContent"><div class="content">原版/本站右键菜单</div></div></div></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="8152976493" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random" volume="0.7"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://y.qq.com/n/ryqq/playlist/8802438608&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.cbd.int/@fancyapps/ui@5.0.28/dist/fancybox/fancybox.umd.js"></script><script src="https://cdn.cbd.int/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://cdn.cbd.int/vanilla-lazyload@17.8.5/dist/lazyload.iife.min.js"></script><script src="https://cdn.cbd.int/node-snackbar@0.1.16/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.cbd.int/pangu@4.0.7/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script>// 消除控制台打印
+var HoldLog = console.log;
+console.log = function () {};
+let now1 = new Date();
+queueMicrotask(() => {
+  const Log = function () {
+    HoldLog.apply(console, arguments);
+  }; //在恢复前输出日志
+  const grt = new Date("12/15/2023 00:00:00"); //此处修改你的建站时间或者网站上线时间
+  now1.setTime(now1.getTime() + 250);
+  const days = (now1 - grt) / 1000 / 60 / 60 / 24;
+  const dnum = Math.floor(days);
+  const ascll = [
+    `欢迎使用安知鱼!`,
+    `生活明朗, 万物可爱`,
+    `
+        
+       █████╗ ███╗   ██╗███████╗██╗  ██╗██╗██╗   ██╗██╗   ██╗
+      ██╔══██╗████╗  ██║╚══███╔╝██║  ██║██║╚██╗ ██╔╝██║   ██║
+      ███████║██╔██╗ ██║  ███╔╝ ███████║██║ ╚████╔╝ ██║   ██║
+      ██╔══██║██║╚██╗██║ ███╔╝  ██╔══██║██║  ╚██╔╝  ██║   ██║
+      ██║  ██║██║ ╚████║███████╗██║  ██║██║   ██║   ╚██████╔╝
+      ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝   ╚═╝    ╚═════╝
+        
+        `,
+    "已上线",
+    dnum,
+    "天",
+    "©2020 By 安知鱼 V1.6.12",
+  ];
+  const ascll2 = [`NCC2-036`, `调用前置摄像头拍照成功，识别为【小笨蛋】.`, `Photo captured: `, `🤪`];
+
+  setTimeout(
+    Log.bind(
+      console,
+      `\n%c${ascll[0]} %c ${ascll[1]} %c ${ascll[2]} %c${ascll[3]}%c ${ascll[4]}%c ${ascll[5]}\n\n%c ${ascll[6]}\n`,
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      "color:#425AEF",
+      "",
+      "color:#425AEF",
+      ""
+    )
+  );
+  setTimeout(
+    Log.bind(
+      console,
+      `%c ${ascll2[0]} %c ${ascll2[1]} %c \n${ascll2[2]} %c\n${ascll2[3]}\n`,
+      "color:white; background-color:#4fd953",
+      "",
+      "",
+      'background:url("https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/tinggge.gif") no-repeat;font-size:450%'
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c WELCOME %c 你好，小笨蛋.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(
+      console,
+      "%c ⚡ Powered by 安知鱼 %c 你正在访问 飙马野郎 的博客.",
+      "color:white; background-color:#f0ad4e",
+      ""
+    )
+  );
+
+  setTimeout(Log.bind(console, "%c W23-12 %c 你已打开控制台.", "color:white; background-color:#4f90d9", ""));
+
+  setTimeout(
+    console.warn.bind(console, "%c S013-782 %c 你现在正处于监控中.", "color:white; background-color:#d9534f", "")
+  );
+});</script><script async src="/anzhiyu/random.js"></script><script async="async">(function () {
+  var grt = new Date("12/15/2023 00:00:00"); //设置网站上线时间
+  var now = new Date();
+  var dnum;
+  var hnum;
+  var mnum;
+  var snum;
+  var nowHour;
+
+  // 计算并更新天数、小时数、分钟数和秒数
+  function updateTime() {
+    now = new Date(); // 更新 now 的值
+    nowHour = now.getHours(); // 更新 nowHour 的值
+    var days = (now - grt) / 1000 / 60 / 60 / 24;
+    dnum = Math.floor(days);
+    var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+    hnum = Math.floor(hours);
+    if (String(hnum).length == 1) {
+      hnum = "0" + hnum;
+    }
+    var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+    mnum = Math.floor(minutes);
+    if (String(mnum).length == 1) {
+      mnum = "0" + mnum;
+    }
+    var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+    snum = Math.round(seconds);
+    if (String(snum).length == 1) {
+      snum = "0" + snum;
+    }
+  }
+
+  // 更新网页中显示的网站运行时间
+  function updateHtml() {
+    const footer = document.getElementById("footer");
+    if (!footer) return
+    let currentTimeHtml = "";
+    if (nowHour < 18 && nowHour >= 9) {
+      // 如果是上班时间，默认就是"安知鱼-上班摸鱼中.svg"图片，不需要更改
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    } else {
+      // 如果是下班时间，插入"安知鱼-下班啦.svg"图片
+      let img = document.querySelector("#workboard .workSituationImg");
+      if (img != null) {
+        img.src = "https://npm.elemecdn.com/anzhiyu-blog@2.0.4/img/badge/安知鱼-下班啦.svg";
+        img.title = "下班了就该开开心心的玩耍，嘿嘿~";
+        img.alt = "下班了就该开开心心的玩耍，嘿嘿~";
+      }
+
+      currentTimeHtml = `本站居然运行了 ${dnum} 天<span id='runtime'> ${hnum} 小时 ${mnum} 分 ${snum} 秒 </span><i class='anzhiyufont anzhiyu-icon-heartbeat' style='color:red'></i>`;
+    }
+
+    if (document.getElementById("runtimeTextTip")) {
+      document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+    }
+  }
+
+  setInterval(() => {
+    updateTime();
+    updateHtml();
+  }, 1000);
+})();</script><div class="js-pjax"><input type="hidden" name="page-type" id="page-type" value="post"></div><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "";
+</script><script async data-pjax src="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><script src="/js/anzhiyu/right_click_menu.js"></script><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><link rel="stylesheet" href="https://cdn.cbd.int/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.cbd.int/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://cdn.cbd.int/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.cbd.int/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script charset="UTF-8" src="https://cdn.cbd.int/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>
